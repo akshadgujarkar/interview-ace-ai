@@ -19,9 +19,15 @@ import { RadarChart, PolarGrid, PolarAngleAxis, Radar, ResponsiveContainer } fro
 const Results = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const session: InterviewSession = location.state?.session;
+  const session: InterviewSession | undefined = location.state?.session;
 
   if (!session) {
+    navigate('/dashboard');
+    return null;
+  }
+
+  // Handle empty feedback array
+  if (!session.feedback || session.feedback.length === 0) {
     navigate('/dashboard');
     return null;
   }

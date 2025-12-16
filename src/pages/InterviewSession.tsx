@@ -29,12 +29,14 @@ const InterviewSession = () => {
     session,
     currentQuestionIndex,
     isLoading,
+    isGenerating,
     startInterview,
     submitAnswer,
     nextQuestion,
     endInterview,
     currentQuestion,
-    progress
+    progress,
+    error
   } = useInterview();
 
   const [answer, setAnswer] = useState('');
@@ -81,9 +83,9 @@ const InterviewSession = () => {
     setAnswer('');
   };
 
-  const handleNextQuestion = () => {
+  const handleNextQuestion = async () => {
     if (session && currentQuestionIndex >= session.questions.length - 1) {
-      const completedSession = endInterview();
+      const completedSession = await endInterview();
       navigate('/results', { state: { session: completedSession } });
     } else {
       nextQuestion();
@@ -97,12 +99,33 @@ const InterviewSession = () => {
     // Voice recording would be implemented here with Web Speech API
   };
 
-  if (!session || !currentQuestion) {
+  if (error) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-16 h-16 rounded-full bg-destructive/20 flex items-center justify-center mx-auto mb-4">
+            <Brain className="w-8 h-8 text-destructive" />
+          </div>
+          <p className="text-destructive mb-4">{error}</p>
+          <Button onClick={() => navigate('/setup')} variant="outline">
+            Go Back to Setup
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
+  if (isGenerating || !session || !currentQuestion) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
           <Loader2 className="w-12 h-12 animate-spin text-primary mx-auto mb-4" />
-          <p className="text-muted-foreground">Preparing your interview...</p>
+          <p className="text-muted-foreground">
+            {isGenerating ? 'Generating AI questions...' : 'Preparing your interview...'}
+          </p>
+          {isGenerating && (
+            <p className="text-xs text-muted-foreground mt-2">This may take a few seconds</p>
+          )}
         </div>
       </div>
     );
