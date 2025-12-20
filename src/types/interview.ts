@@ -59,11 +59,21 @@ export interface InterviewSession {
   completedAt?: Date;
 }
 
+export type UserRole = 'student' | 'undergraduate' | 'postgraduate';
+
 export interface UserProfile {
+  phone: string;
+  location: string;
+  linkedin?: string;
+  github?: string;
+  portfolio?: string;
+  skills: string;
   id: string;
   email: string;
   name: string;
   avatar?: string;
+  role?: UserRole;
+  description?: string;
   totalInterviews: number;
   averageScore: number;
   streakDays: number;
