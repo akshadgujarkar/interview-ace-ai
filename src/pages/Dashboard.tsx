@@ -117,89 +117,23 @@ const Dashboard = () => {
                   <Brain className="h-6 w-6 text-white" />
                 </div>
                 <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
-                  InterviewAceAI
+                  PrepBot
                 </span>
               </Link>
-              <div className="hidden md:flex items-center space-x-8">
-                <Link to="/dashboard" className="flex items-center space-x-2 text-blue-600 font-semibold">
-                  <Home className="h-5 w-5" />
-                  <span>Dashboard</span>
-                </Link>
-                <Link to="/setup" className="flex items-center space-x-2 text-gray-600 hover:text-blue-600">
-                  <Video className="h-5 w-5" />
-                  <span>Interviews</span>
-                </Link>
-                <Link to="/profile" className="flex items-center space-x-2 text-gray-600 hover:text-blue-600">
-                  <Users className="h-5 w-5" />
-                  <span>Profile</span>
-                </Link>
-              </div>
             </div>
-            <span className="text-lg font-display font-bold">PrepBot</span>
-          </Link>
-          <div className="flex items-center gap-4">
-            <Link to="/setup">
-              <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
-                <Play className="w-4 h-4 mr-2" />
-                New Interview
-              </Button>
-            </Link>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="relative h-10 w-10 rounded-full">
-                  <Avatar className="h-10 w-10">
-                    <AvatarFallback className="bg-primary/20 text-primary">
-                      {user?.name?.charAt(0)?.toUpperCase() || 'U'}
-                    </AvatarFallback>
-                  </Avatar>
-                </Button>
+            <div className="hidden md:flex items-center space-x-8">
+              <Link to="/dashboard" className="flex items-center space-x-2 text-blue-600 font-semibold">
+                <Home className="h-5 w-5" />
+                <span>Dashboard</span>
               </Link>
-
-              <button className="relative p-2 text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400">
-                <Bell className="h-6 w-6" />
-                <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
-              </button>
-
-              <button className="p-2 text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400">
-                <HelpCircle className="h-6 w-6" />
-              </button>
-
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" className="relative h-12 w-12 rounded-full border-2 border-gray-300 hover:border-blue-500 transition-colors">
-                    <Avatar className="h-10 w-10">
-                      <AvatarFallback className="bg-gradient-to-r from-blue-500 to-purple-500 text-white text-lg font-bold">
-                        {user?.name?.charAt(0)?.toUpperCase() || 'U'}
-                      </AvatarFallback>
-                    </Avatar>
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="bg-white border-gray-200 shadow-xl rounded-xl p-2 w-56">
-                  <div className="flex items-center gap-3 p-3 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg mb-2">
-                    <Avatar className="h-10 w-10">
-                      <AvatarFallback className="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
-                        {user?.name?.charAt(0)?.toUpperCase() || 'U'}
-                      </AvatarFallback>
-                    </Avatar>
-                    <div className="flex flex-col">
-                      <p className="text-sm font-bold text-gray-900">{user?.name}</p>
-                      <p className="text-xs text-gray-600 truncate">{user?.email}</p>
-                    </div>
-                  </div>
-                  <DropdownMenuSeparator className="bg-gray-200" />
-                  <DropdownMenuItem asChild className="cursor-pointer py-3 px-4 rounded-lg hover:bg-gray-100">
-                    <Link to="/profile" className="flex items-center">
-                      <Settings className="h-4 w-4 mr-3 text-gray-600" />
-                      <span>Profile Settings</span>
-                    </Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuSeparator className="bg-gray-200" />
-                  <DropdownMenuItem onClick={handleLogout} className="cursor-pointer py-3 px-4 rounded-lg hover:bg-red-50 text-red-600">
-                    <LogOut className="h-4 w-4 mr-3" />
-                    Logout
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
+              <Link to="/setup" className="flex items-center space-x-2 text-gray-600 hover:text-blue-600">
+                <Video className="h-5 w-5" />
+                <span>Interviews</span>
+              </Link>
+              <Link to="/profile" className="flex items-center space-x-2 text-gray-600 hover:text-blue-600">
+                <Users className="h-5 w-5" />
+                <span>Profile</span>
+              </Link>
             </div>
           </div>
         </div>
@@ -236,7 +170,8 @@ const Dashboard = () => {
               label: 'This Week',
               value: recentSessions.filter(s => s.createdAt > new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)).length,
               color: 'from-purple-500 to-purple-600',
-              bgColor: 'bg-purple-50 dark:bg-purple-900/20'
+              bgColor: 'bg-purple-50 dark:bg-purple-900/20',
+              change:'Frequency'
             },
             {
               icon: Award,
@@ -251,7 +186,7 @@ const Dashboard = () => {
               <CardContent className="p-6">
                 <div className="flex items-start justify-between mb-4">
                   <div className={`p-3 ${stat.bgColor} rounded-xl`}>
-                    <stat.icon className={`h-6 w-6 bg-gradient-to-r ${stat.color} bg-clip-text text-transparent`} />
+                    <stat.icon className={`h-6 w-6 bg-gradient-to-r ${stat.color} bg-clip-text`} />
                   </div>
                   {stat.change && (
                     <span className="text-xs font-medium text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/20 px-2 py-1 rounded-full">
@@ -422,7 +357,7 @@ const Dashboard = () => {
                 {recentSessions.map((session) => {
                   // Convert difficulty to string for comparison
                   const difficultyStr = session.difficulty?.toString() || '';
-                  
+
                   return (
                     <div
                       key={session.id}
@@ -454,13 +389,12 @@ const Dashboard = () => {
                             <span className="text-sm text-gray-600 dark:text-gray-300">•</span>
                             <span className="text-sm text-gray-600 dark:text-gray-300">{session.questions?.length || 0} questions</span>
                             <span className="text-sm text-gray-600 dark:text-gray-300">•</span>
-                            <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                              difficultyStr === 'hard'
+                            <span className={`px-3 py-1 rounded-full text-xs font-medium ${difficultyStr === 'hard'
                                 ? 'bg-red-100 dark:bg-red-900/20 text-red-800 dark:text-red-400'
                                 : difficultyStr === 'medium'
-                                ? 'bg-yellow-100 dark:bg-yellow-900/20 text-yellow-800 dark:text-yellow-400'
-                                : 'bg-green-100 dark:bg-green-900/20 text-green-800 dark:text-green-400'
-                            }`}>
+                                  ? 'bg-yellow-100 dark:bg-yellow-900/20 text-yellow-800 dark:text-yellow-400'
+                                  : 'bg-green-100 dark:bg-green-900/20 text-green-800 dark:text-green-400'
+                              }`}>
                               {difficultyStr ? difficultyStr.charAt(0).toUpperCase() + difficultyStr.slice(1) : 'Not Set'}
                             </span>
                           </div>

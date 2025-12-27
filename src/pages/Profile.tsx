@@ -145,13 +145,13 @@ const Profile = () => {
       console.log('=== Starting Photo Upload ===');
       console.log('User ID:', user.id);
       console.log('File:', tempPhotoFile.name, 'Size:', tempPhotoFile.size);
-      
+
       const photoUrl = await uploadProfilePhoto(user.id, tempPhotoFile);
-      
+
       console.log('=== Upload Complete ===');
       console.log('Returned URL:', photoUrl);
       console.log('URL is empty?', !photoUrl || photoUrl.trim() === '');
-      
+
       setProfile(prev => prev ? { ...prev, avatar: photoUrl } : null);
       setFormData(prev => ({ ...prev, avatar: photoUrl }));
       setTempPhotoFile(null);
@@ -246,39 +246,32 @@ const Profile = () => {
       <nav className="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-b border-gray-200/50 dark:border-gray-800/50">
         <div className="px-8 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center  space-x-3">
               <Link to="/" className="flex items-center space-x-3">
                 <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center">
                   <Brain className="h-6 w-6 text-white" />
                 </div>
                 <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400">
-                  InterviewAceAI
+                  PrepBot
                 </span>
               </Link>
-              <div className="hidden md:flex items-center space-x-6 ml-8">
-                <Link to="/dashboard" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors">
-                  Dashboard
-                </Link>
-                <Link to="/setup" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors">
-                  Interviews
-                </Link>
-                <Link to="/results" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors">
-                  Results
-                </Link>
-                <Link to="/profile" className="text-blue-600 dark:text-blue-400 font-bold flex items-center">
-                  <User className="h-5 w-5 mr-2" />
-                  Profile
-                </Link>
-              </div>
             </div>
-            <span className="text-lg font-display font-bold">PrepBot</span>
-          </Link>
-          <Link to="/dashboard">
-            <Button variant="ghost">
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Back to Dashboard
-            </Button>
-          </Link>
+            <div className="hidden md:flex items-end space-x-6 ml-8">
+              <Link to="/dashboard" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors">
+                Dashboard
+              </Link>
+              <Link to="/setup" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors">
+                Interviews
+              </Link>
+              <Link to="/results" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors">
+                Results
+              </Link>
+              <Link to="/profile" className="text-blue-600 dark:text-blue-400 font-bold flex items-center">
+                <User className="h-5 w-5 mr-2" />
+                Profile
+              </Link>
+            </div>
+          </div>
         </div>
       </nav>
 
@@ -291,12 +284,12 @@ const Profile = () => {
             </h1>
             <p className="text-gray-600 dark:text-gray-400">Manage your account information and preferences</p>
           </div>
-            <div className="flex items-center space-x-4">
-              <Button variant="outline" className="border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
-                <Settings className="h-5 w-5 mr-2" />
-                Settings
-              </Button>
-            </div>
+          <div className="flex items-center space-x-4">
+            <Button variant="outline" className="border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+              <Settings className="h-5 w-5 mr-2" />
+              Settings
+            </Button>
+          </div>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8">
@@ -337,8 +330,8 @@ const Profile = () => {
                             className="hidden"
                             disabled={isUploadingPhoto}
                           />
-                          <Button 
-                            variant="outline" 
+                          <Button
+                            variant="outline"
                             className="w-full border-2 border-dashed border-gray-300 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 text-gray-700 dark:text-gray-300 py-6 transition-all"
                           >
                             <Camera className="h-5 w-5 mr-3" />
@@ -349,7 +342,7 @@ const Profile = () => {
                           JPG, PNG, or GIF • Max 5MB
                         </p>
                       </div>
-                      
+
                       {profile?.avatar && profile.avatar.trim() && (
                         <Button
                           variant="ghost"
@@ -654,15 +647,15 @@ const Profile = () => {
               Delete Profile Photo?
             </AlertDialogTitle>
             <AlertDialogDescription className="text-center text-gray-600 dark:text-gray-400 mt-4">
-              Are you sure you want to delete your profile photo? 
+              Are you sure you want to delete your profile photo?
               This action cannot be undone.
             </AlertDialogDescription>
             <div className="flex gap-4 justify-center mt-8">
               <AlertDialogCancel className="border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 px-8 py-3 rounded-xl transition-colors">
                 Cancel
               </AlertDialogCancel>
-              <AlertDialogAction 
-                onClick={handleDeletePhoto} 
+              <AlertDialogAction
+                onClick={handleDeletePhoto}
                 className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-8 py-3 rounded-xl"
               >
                 Delete Photo
@@ -672,10 +665,6 @@ const Profile = () => {
         </AlertDialogContent>
       </AlertDialog>
 
-      {/* Theme Toggle in bottom left corner */}
-      <div className="fixed bottom-6 left-6 z-50">
-        <ThemeToggle />
-      </div>
     </div>
   );
 };

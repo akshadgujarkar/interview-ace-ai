@@ -185,21 +185,17 @@ const InterviewSetup = () => {
                 <Brain className="h-6 w-6 text-white" />
               </div>
               <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
-                InterviewAceAI
+                PrepBot
               </span>
             </Link>
             <div className="flex items-center space-x-4">
               <Link to="/dashboard">
-                <Button variant="outline" className="border-gray-300 dark:border-slate-600 hover:bg-gray-100 dark:hover:bg-slate-800 text-gray-700 dark:text-gray-300">
-                  Dashboard
+                <Button variant="outline" className="border-gray-300  dark:border-slate-600 hover:bg-gray-100 dark:hover:bg-slate-800 text-gray-700 dark:text-gray-300">
+                  Dashboard 
                 </Button>
               </Link>
             </div>
-            <span className="text-lg font-display font-bold">PrepBot</span>
-          </Link>
-          <Link to="/dashboard">
-            <Button variant="ghost" size="sm">Dashboard</Button>
-          </Link>
+          </div>
         </div>
       </nav>
 

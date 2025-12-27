@@ -61,7 +61,7 @@ export function useInterview(): UseInterviewReturn {
         config.questionCount,
         config.resumeContent
       );
-      alert(JSON.stringify(questions))
+      // alert(JSON.stringify(questions))
       // Save to Firebase
       const firestoreSession = await createInterviewSession(
         firebaseUser.uid,

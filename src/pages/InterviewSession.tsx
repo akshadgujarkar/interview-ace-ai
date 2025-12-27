@@ -300,7 +300,7 @@ const InterviewSession = () => {
                   <Brain className="h-6 w-6 text-white" />
                 </div>
                 <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
-                  InterviewAceAI
+                  PrepBot
                 </span>
               </Link>
               <div className="hidden md:flex items-center space-x-6 text-sm">

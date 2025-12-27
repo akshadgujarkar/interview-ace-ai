@@ -278,10 +278,6 @@ export function useProctor({
               const now = Date.now();
               const WARNING_COOLDOWN = 5000; // 5 sec
               const PERSISTENCE_THRESHOLD = 30; // ~1 sec at 30fps
-
-              const WARNING_COOLDOWN = 5000; // 5 seconds (reduced from 15s for better responsiveness)
-              const NO_FACE_PERSISTENCE = 45; // ~1.5 seconds (reduced from 90)
-              const MULTI_FACE_PERSISTENCE = 15; // ~0.5 seconds (reduced from 30)
               const DARK_FRAME_PERSISTENCE = 30; // ~1 second (reduced from 60)
 
               const canWarn =

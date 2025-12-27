@@ -117,7 +117,7 @@ const Results = () => {
                 <Brain className="h-6 w-6 text-white" />
               </div>
               <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
-                InterviewAceAI
+                PrepBot
               </span>
             </Link>
             <div className="flex items-center space-x-4">

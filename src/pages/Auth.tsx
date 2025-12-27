@@ -115,7 +115,7 @@ const Auth = () => {
             <Brain size={24} />
           </div>
           <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
-            InterviewAceAI
+            PrepBot
           </span>
         </div>
         <div className="flex items-center space-x-4">

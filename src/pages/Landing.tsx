@@ -8,8 +8,17 @@ import {
   Mic,
   MessageSquare,
   BarChart3,
+  Sparkles,
+  ChevronRight,
+  Code,
+  Cpu,
+  Globe,
+  Cloud,
+  Smartphone,
+  Database,
+  Star,
+  Award,
 } from "lucide-react";
-import FeedbackCarousel from "@/components/ui/feedback-carousel";
 
 const Landing = () => {
   return (
@@ -28,7 +37,7 @@ const Landing = () => {
                 <Brain className="h-6 w-6 text-white" />
               </div>
               <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
-                InterviewAceAI
+                PrepBot
               </span>
             </div>
             <div className="flex items-center space-x-6">
@@ -45,17 +54,6 @@ const Landing = () => {
               </Link>
             </div>
           </div>
-          <span className="text-xl font-display font-bold">PrepBot</span>
-        </div>
-        <div className="flex items-center gap-4">
-          <Link to="/auth">
-            <Button variant="ghost">Login</Button>
-          </Link>
-          <Link to="/auth">
-            <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
-              Get Started
-            </Button>
-          </Link>
         </div>
       </nav>
 
@@ -179,7 +177,7 @@ const Landing = () => {
               className="glass-card rounded-xl p-6 hover:border-primary/30 transition-all duration-300 group"
             >
               <div className="w-16 h-16 bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-12 transition-transform">
-                {feature.icon}
+                <feature.icon className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-xl font-bold mb-4 group-hover:text-white transition-colors">{feature.title}</h3>
               <p className="text-gray-300 leading-relaxed">{feature.description}</p>
@@ -215,9 +213,9 @@ const Landing = () => {
               <div className={`w-14 h-14 bg-gradient-to-r ${tech.color} rounded-xl flex items-center justify-center mx-auto mb-4`}>
                 <div className="text-white">{tech.icon}</div>
               </div>
-              <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
+              <h3 className="text-lg font-semibold mb-2">{tech.name}</h3>
               <p className="text-muted-foreground text-sm">
-                {feature.description}
+                Specialized interview preparation for {tech.name} roles
               </p>
             </div>
           ))}
@@ -295,15 +293,15 @@ const Landing = () => {
         </div>
       </section>
 
-      {/* Feedback Carousel */}
-      <FeedbackCarousel />
 
       {/* Footer */}
       <footer className="relative z-10 border-t border-border/50 py-8 mt-20">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <Brain className="w-5 h-5 text-primary" />
-            <span className="font-display font-semibold">InterviewAI</span>
+              <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center">
+                <Brain className="h-6 w-6 text-white" />
+              </div>
+            <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">PrepBot</span>
           </div>
         </div>
       </footer>
